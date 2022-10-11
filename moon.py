@@ -139,30 +139,30 @@ def bul(_, message):
             ydl.process_info(info_dict)
         kisi = f"@{message.from_user.username}"
 
-        mel = f"╔═══════════════╗\nYouTubeMusic\n\n➤🏷Başlık :{audio_file}\n\n➤👤Talep Eden :{kisi}\n\n➤🤖Bot :@YoutubeVcProBot\n\n╚══════════════╝"
+        mel = f"╔═══════════════╗\nMissMuzikBot\n\n➤🏷Başlık :{audio_file}\n\n➤👤Talep Eden :{kisi}\n\n➤🤖Bot :@MissMuzikBot\n\n╚══════════════╝"
 
         
-        rep = f"𝙸𝚗𝚍𝚒𝚛𝚍𝚒𝚐𝚒𝚗𝚒𝚣 𝚃𝚞𝚖 𝙼𝚞𝚣𝚒𝚔𝚕𝚎𝚛 𝚈𝚘𝚞𝚝𝚞𝚋𝚎 𝙼𝚞𝚜𝚒𝚌 𝙺𝚊𝚗𝚊𝚕𝚒𝚖𝚒𝚣𝚍𝚊 𝙺𝚊𝚢𝚒𝚝 𝙰𝚕𝚝𝚒𝚗𝚊 𝙰𝚕𝚒𝚗𝚖𝚊𝚔𝚝𝚊𝚍𝚒𝚛."
+        rep = f"𝙸𝚗𝚍𝚒𝚛𝚍𝚒𝚐𝚒𝚗𝚒𝚣 𝚃𝚞𝚖 𝙼𝚞𝚣𝚒𝚔𝚕𝚎𝚛 Miss Muzik 𝙺𝚊𝚗𝚊𝚕𝚒𝚖𝚒𝚣𝚍𝚊 𝙺𝚊𝚢𝚒𝚝 𝙰𝚕𝚝𝚒𝚗𝚊 𝙰𝚕𝚒𝚗𝚖𝚊𝚔𝚝𝚊𝚍𝚒𝚛."
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
         m.edit("•> **Yükleniyor**...")
         
-        message.reply_audio(audio_file, caption=rep, parse_mode='md',quote=False, title=title, duration=dur, thumb=thumb_name, performer="@YouTubeVcProBot",
+        message.reply_audio(audio_file, caption=rep, parse_mode='md',quote=False, title=title, duration=dur, thumb=thumb_name, performer="@MissMuzikBot",
         reply_markup = InlineKeyboardMarkup(
            [
                 [
                     InlineKeyboardButton(
-                        text="🎧 𝙔𝙤𝙪𝙏𝙪𝙗𝙚 𝙈𝙪𝙨𝙞𝙘 🎧",
-                        url="https://t.me/YoutubevcMuzik")
+                        text="🎧 𝐌𝐢𝐬𝐬 𝐌𝐮𝐳𝐢𝐤 𝐊𝐚𝐲𝐢𝐭 🎧",
+                        url="https://t.me/MissMuzikKayit")
                    
                 ]
             ]
         )
       )
         m.delete()
-        bot.send_audio(chat_id=Config.PLAYLIST_ID, audio=audio_file, caption=mel, performer="@YouTubeVcProBot", parse_mode='md', title=title, duration=dur, thumb=thumb_name,)
+        bot.send_audio(chat_id=Config.PLAYLIST_ID, audio=audio_file, caption=mel, performer="@MissMuzikBot", parse_mode='md', title=title, duration=dur, thumb=thumb_name,)
     except Exception as e:
         m.edit("<b>⛔ **Hatanın düzelmesini bekleyin** .</b>")
         print(e)
