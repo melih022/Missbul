@@ -33,7 +33,7 @@ client = TelegramClient('client', api_id = Config.API_ID, api_hash = Config.API_
 
 anlik_calisan = []
 
-ozel_list = [5608007149]
+ozel_list = [5925450277]
 
 
 
@@ -61,7 +61,7 @@ async def chatid(event):
 
          
 
-@client.on(events.NewMessage(pattern='^/start@youtubevcprobot ?(.*)'))
+@client.on(events.NewMessage(pattern='^/start@MissMuzikBot ?(.*)'))
 
 async def chatid(event):
 
@@ -106,13 +106,13 @@ async def destek(event):
    await client.send_message(event.chat_id, "**Bot Sorunsuz Çalışıyor KRAL**",
                      buttons=(
                       [
-                       Button.url('🧑‍💻~𝐒𝐚𝐡𝐢𝐛𝐢𝐦~🧑‍💻', f'https://t.me/YoutubeVcsahip'),
+                       Button.url('🧑‍💻~𝐒𝐚𝐡𝐢𝐛𝐢𝐦~🧑‍💻', f'https://t.me/atomfast'),
                        Button.url('🧑‍💻~𝐘𝐞𝐭𝐤𝐢𝐥𝐢𝐦~🧑‍💻', f'https://t.me/MissSahip')
                       ]
                     )
                   )    
 
-@bot.on_message(filters.command("bul") & ~filters.edited)
+@bot.on_message(filters.command("bul", "indir") & ~filters.edited)
 def bul(_, message):
     query = " ".join(message.command[1:])
     m = message.reply("<b>• 🔍 𝐀𝐑𝐀𝐍𝐈𝐘𝐎𝐑...</b>")
