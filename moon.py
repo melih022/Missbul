@@ -61,7 +61,7 @@ async def chatid(event):
 
          
 
-@client.on(events.NewMessage(pattern='^/start@MissMuzikBot ?(.*)'))
+@client.on(events.NewMessage(pattern='^/start@VideoMuzikBot ?(.*)'))
 
 async def chatid(event):
 
