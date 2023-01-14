@@ -8,4 +8,4 @@ class Config:
     BOT_USERNAME = os.environ.get("BOT_USERNAME", "VideoMuzikAsistan")
     PLAYLIST_NAME = os.environ.get("PLAYLIST_NAME", "VideoMuzikKayit")
     GROUP = os.environ.get("GROUP", "SohbetMavi") 
-    PLAYLIST_ID = int(os.environ.get("PLAYLIST_ID", "-1001661213368"))
+    PLAYLIST_ID = int(os.environ.get("PLAYLIST_ID", "-1001711522921"))
