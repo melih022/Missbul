@@ -106,8 +106,8 @@ async def destek(event):
    await client.send_message(event.chat_id, "**Bot Sorunsuz Çalışıyor KRAL**",
                      buttons=(
                       [
-                       Button.url('🧑‍💻~𝐒𝐚𝐡𝐢𝐛𝐢𝐦~🧑‍💻', f'https://t.me/atomfast'),
-                       Button.url('🧑‍💻~𝐘𝐞𝐭𝐤𝐢𝐥𝐢𝐦~🧑‍💻', f'https://t.me/MissSahip')
+                       Button.url('🧑‍💻~𝐒𝐚𝐡𝐢𝐛𝐢𝐦~🧑‍💻', f'https://t.me/MissSahip'),
+                       Button.url('🧑‍💻~𝐘𝐞𝐭𝐤𝐢𝐥𝐢𝐦~🧑‍💻', f'https://t.me/İntikamkurucusu')
                       ]
                     )
                   )    
@@ -139,7 +139,7 @@ def bul(_, message):
             ydl.process_info(info_dict)
         kisi = f"@{message.from_user.username}"
 
-        mel = f"╔═══════════════╗\nMissMuzikBot\n\n➤🏷Başlık :{audio_file}\n\n➤👤Talep Eden :{kisi}\n\n➤🤖Bot :@MissMuzikBot\n\n╚══════════════╝"
+        mel = f"╔═══════════════╗\nVideoMuzikBot\n\n➤🏷Başlık :{audio_file}\n\n➤👤Talep Eden :{kisi}\n\n➤🤖Bot :@VideoMuzikBot\n\n╚══════════════╝"
 
         
         rep = f"𝙸𝚗𝚍𝚒𝚛𝚍𝚒𝚐𝚒𝚗𝚒𝚣 𝚃𝚞𝚖 𝙼𝚞𝚣𝚒𝚔𝚕𝚎𝚛 Miss Muzik 𝙺𝚊𝚗𝚊𝚕𝚒𝚖𝚒𝚣𝚍𝚊 𝙺𝚊𝚢𝚒𝚝 𝙰𝚕𝚝𝚒𝚗𝚊 𝙰𝚕𝚒𝚗𝚖𝚊𝚔𝚝𝚊𝚍𝚒𝚛."
@@ -149,13 +149,13 @@ def bul(_, message):
             secmul *= 60
         m.edit("•> **Yükleniyor**...")
         
-        message.reply_audio(audio_file, caption=rep, parse_mode='md',quote=False, title=title, duration=dur, thumb=thumb_name, performer="@MissMuzikBot",
+        message.reply_audio(audio_file, caption=rep, parse_mode='md',quote=False, title=title, duration=dur, thumb=thumb_name, performer="@VideoMuzikBot",
         reply_markup = InlineKeyboardMarkup(
            [
                 [
                     InlineKeyboardButton(
-                        text="🎧 𝐌𝐢𝐬𝐬 𝐌𝐮𝐳𝐢𝐤 𝐊𝐚𝐲𝐢𝐭 🎧",
-                        url="https://t.me/MissMuzikKayit")
+                        text="🎧 𝐕𝐢𝐝𝐞𝐨 𝐌𝐮𝐳𝐢𝐤 𝐊𝐚𝐲𝐢𝐭 🎧",
+                        url="https://t.me/VideoMuzikKayit")
                    
                 ]
             ]
