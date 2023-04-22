@@ -61,7 +61,7 @@ async def chatid(event):
 
          
 
-@client.on(events.NewMessage(pattern='^/start@VideoMuzikBot ?(.*)'))
+@client.on(events.NewMessage(pattern='^/start@deepvcbot ?(.*)'))
 
 async def chatid(event):
 
@@ -106,8 +106,8 @@ async def destek(event):
    await client.send_message(event.chat_id, "**Bot Sorunsuz Çalışıyor KRAL**",
                      buttons=(
                       [
-                       Button.url('🧑‍💻~𝐒𝐚𝐡𝐢𝐛𝐢𝐦~🧑‍💻', f'https://t.me/İntikamkurucusu'),
-                       Button.url('🧑‍💻~𝐘𝐞𝐭𝐤𝐢𝐥𝐢𝐦~🧑‍💻', f'https://t.me/GSTilki1453')
+                       Button.url('🧑‍💻~𝐒𝐚𝐡𝐢𝐛𝐢𝐦~🧑‍💻', f'https://t.me/DeepBotsventor),
+                       Button.url('🧑‍💻~𝐃𝐞𝐞𝐩 𝐁𝐨𝐭𝐬~🧑‍💻', f'https://t.me/DeepBotofficial')
                       ]
                     )
                   )    
@@ -139,10 +139,10 @@ def bul(_, message):
             ydl.process_info(info_dict)
         kisi = f"@{message.from_user.username}"
 
-        mel = f"╔═══════════════╗\nVideoMuzikBot\n\n➤🏷Başlık :{audio_file}\n\n➤👤Talep Eden :{kisi}\n\n➤🤖Bot :@VideoMuzikBot\n\n╚══════════════╝"
+        mel = f"╔═══════════════╗\nDeep Bots\n\n➤🏷Başlık :{audio_file}\n\n➤👤Talep Eden :{kisi}\n\n➤🤖Bot :@DeepVcBot\n\n╚══════════════╝"
 
         
-        rep = f"𝙸𝚗𝚍𝚒𝚛𝚍𝚒𝚐𝚒𝚗𝚒𝚣 𝚃𝚞𝚖 𝙼𝚞𝚣𝚒𝚔𝚕𝚎𝚛 Video Muzik 𝙺𝚊𝚗𝚊𝚕𝚒𝚖𝚒𝚣𝚍𝚊 𝙺𝚊𝚢𝚒𝚝 𝙰𝚕𝚝𝚒𝚗𝚊 𝙰𝚕𝚒𝚗𝚖𝚊𝚔𝚝𝚊𝚍𝚒𝚛."
+        rep = f"𝙸𝚗𝚍𝚒𝚛𝚍𝚒𝚐𝚒𝚗𝚒𝚣 𝚃𝚞𝚖 𝙼𝚞𝚣𝚒𝚔𝚕𝚎𝚛 Deep Bots Music 𝙺𝚊𝚗𝚊𝚕𝚒𝚖𝚒𝚣𝚍𝚊 𝙺𝚊𝚢𝚒𝚝 𝙰𝚕𝚝𝚒𝚗𝚊 𝙰𝚕𝚒𝚗𝚖𝚊𝚔𝚝𝚊𝚍𝚒𝚛."
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(float(dur_arr[i])) * secmul
@@ -155,7 +155,7 @@ def bul(_, message):
                 [
                     InlineKeyboardButton(
                         text="🎧 𝐕𝐢𝐝𝐞𝐨 𝐌𝐮𝐳𝐢𝐤 𝐊𝐚𝐲𝐢𝐭 🎧",
-                        url="https://t.me/VideoMuzikKayit")
+                        url="https://t.me/DeepBotsMusic")
                    
                 ]
             ]
