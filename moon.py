@@ -103,7 +103,7 @@ async def son_durum(event):
  
 @client.on(events.NewMessage(pattern='^/deep ?(.*)'))
 async def destek(event):
-   await client.send_message(event.chat_id, "**Bot Sorunsuz Çalışıyor KRAL**",
+   await client.send_message(event.chat_id, "**Keşfetmek İçin Derinlere Dal💫**",
                      buttons=(
                       [
                        Button.url('🧑‍💻~𝐒𝐚𝐡𝐢𝐛𝐢𝐦~🧑‍💻', f'https://t.me/DeepBotsventor'),
