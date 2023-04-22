@@ -107,7 +107,7 @@ async def destek(event):
                      buttons=(
                       [
                        Button.url('🧑‍💻~𝐒𝐚𝐡𝐢𝐛𝐢𝐦~🧑‍💻', f'https://t.me/DeepBotsventor'),
-                       Button.url('🧑‍💻~𝐃𝐞𝐞𝐩 𝐁𝐨𝐭𝐬~🧑‍💻', f'https://t.me/DeepBotofficial')
+                       Button.url('🧑‍💻~𝐃𝐞𝐞𝐩 𝐁𝐨𝐭𝐬~🧑‍💻', f'https://t.me/DeepBotsofficial')
                       ]
                     )
                   )    
@@ -162,7 +162,7 @@ def bul(_, message):
         )
       )
         m.delete()
-        bot.send_audio(chat_id=Config.PLAYLIST_ID, audio=audio_file, caption=mel, performer="@VideoMuzikBot", parse_mode='md', title=title, duration=dur, thumb=thumb_name,)
+        bot.send_audio(chat_id=Config.PLAYLIST_ID, audio=audio_file, caption=mel, performer="@DeepVcBot", parse_mode='md', title=title, duration=dur, thumb=thumb_name,)
     except Exception as e:
         m.edit("<b>⛔ **Hatanın düzelmesini bekleyin** .</b>")
         print(e)
