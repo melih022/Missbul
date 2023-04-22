@@ -154,7 +154,7 @@ def bul(_, message):
            [
                 [
                     InlineKeyboardButton(
-                        text="🎧 𝐕𝐢𝐝𝐞𝐨 𝐌𝐮𝐳𝐢𝐤 𝐊𝐚𝐲𝐢𝐭 🎧",
+                        text="🎧 𝐃𝐞𝐞𝐩 𝐁𝐨𝐭𝐬 𝐊𝐚𝐲𝐢𝐭 🎧",
                         url="https://t.me/DeepBotsMusic")
                    
                 ]
