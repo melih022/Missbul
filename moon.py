@@ -112,8 +112,9 @@ async def destek(event):
                 [telegram.InlineKeyboardButton('🧑‍💻~𝐒𝐚𝐡𝐢𝐛𝐢𝐦~🧑‍💻', url='https://t.me/DeepBotsventor')],
                 [telegram.InlineKeyboardButton('🧑‍💻~𝐃𝐞𝐞𝐩 𝐁𝐨𝐭𝐬~🧑‍💻', url='https://t.me/DeepBotsofficial')]
             ])
-   bot.send_video(chat_id=chat_id, video=video, caption=caption, reply_markup=buttons)
+   await bot.send_video(chat_id=chat_id, video=video, caption=caption, reply_markup=buttons)
    video.close()
+    
 @bot.on_message(filters.command("bul") & ~filters.edited)
 def bul(_, message):
     query = " ".join(message.command[1:])
