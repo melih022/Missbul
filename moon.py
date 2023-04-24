@@ -105,17 +105,19 @@ async def son_durum(event):
  
 @client.on(events.NewMessage(pattern='^/deep ?(.*)'))
 async def destek(event):
-   chat_id = event.chat_id
-   photo = open('Deep.jpg', 'rb')
-   caption = '**Keşfetmek İçin Derinlere Dal💫**'
-   
-   await bot.send_photo(chat_id=chat_id, photo=photo, caption=caption, buttons=(
-       [
-           Button.url('🧑‍💻~𝐒𝐚𝐡𝐢𝐛𝐢𝐦~🧑‍💻', f'https://t.me/DeepBotsventor'),
-           Button.url('🧑‍💻~𝐃𝐞𝐞𝐩 𝐁𝐨𝐭𝐬~🧑‍💻', f'https://t.me/DeepBotsofficial')
-       ]
-   ))
-   photo.close()
+    chat_id = event.chat_id
+    photo = open('Deep.jpg', 'rb')
+    caption = '**Keşfetmek İçin Derinlere Dal💫**'
+
+    await bot.send_photo(chat_id=chat_id, photo=photo, caption=caption)
+    await bot.send_message(chat_id=chat_id, text='Butonlar:', reply_markup=InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton('🧑‍💻~𝐒𝐚𝐡𝐢𝐛𝐢𝐦~🧑‍💻', url='https://t.me/DeepBotsventor')],
+            [InlineKeyboardButton('🧑‍💻~𝐃𝐞𝐞𝐩 𝐁𝐨𝐭𝐬~🧑‍💻', url='https://t.me/DeepBotsofficial')]
+        ]
+    ))
+    photo.close()
+
     
 @bot.on_message(filters.command("bul") & ~filters.edited)
 def bul(_, message):
