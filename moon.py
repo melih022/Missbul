@@ -12,6 +12,8 @@ from pyrogram.types import (
     InlineKeyboardMarkup,
     Message
 )
+import requests
+import telegram
 
 
 #config#
