@@ -108,9 +108,30 @@ async def destek(event):
     chat_id = event.chat_id
     photo = open('Deep.jpg', 'rb')
     caption = '**Keşfetmek İçin Derinlere Dal💫**'
+    keyboard = InlineKeyboardMarkup(
 
-    await bot.send_photo(chat_id=chat_id, photo=photo, caption=caption, buttons=[Button.url('🧑‍💻~𝐒𝐚𝐡𝐢𝐛𝐢𝐦~🧑‍💻', f'https://t.me/DeepBotsventor'), Button.url('🧑‍💻~𝐃𝐞𝐞𝐩 𝐁𝐨𝐭𝐬~🧑‍💻', f'https://t.me/DeepBotsofficial')])
+            [
 
+                [
+
+                    
+
+                        InlineKeyboardButton("🧑‍💻~𝐒𝐚𝐡𝐢𝐛𝐢𝐦~🧑‍💻", url=f"https://t.me/DeepBotsventor"),
+
+                        InlineKeyboardButton("~𝐃𝐞𝐞𝐩 𝐁𝐨𝐭𝐬~🧑‍💻", url=f"https://t.me/DeepBotsofficial")
+
+            
+
+                        
+
+                   
+
+                }
+
+            ]
+
+        )
+    await bot.send_photo(chat_id=chat_id, photo=photo, caption=caption,reply_markup=keyboard,)
     photo.close()
 
     
