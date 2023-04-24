@@ -126,7 +126,7 @@ async def destek(event):
 
                    
 
-                }
+                ]
 
             ]
 
