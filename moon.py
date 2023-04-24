@@ -109,13 +109,12 @@ async def destek(event):
    url = 'https://github.com/melih022/Missbul/blob/main/Deep.mp4'
    response = requests.get(url)
    video = response.content
-   caption = '**Bot Sorunsuz Çalışıyor **'
-   buttons = telegram.InlineKeyboardMarkup([
-                [telegram.InlineKeyboardButton('🧑‍💻~𝐒𝐚𝐡𝐢𝐛𝐢𝐦~🧑‍💻', url='https://t.me/DeepBotsventor')],
-                [telegram.InlineKeyboardButton('🧑‍💻~𝐃𝐞𝐞𝐩-𝐁𝐨𝐭𝐬~🧑‍💻', url='https://t.me/DeepBotsofficial')]
+   caption = '**Keşfetmek İçin Derinlere Dal💫**'
+   buttons = InlineKeyboardMarkup([
+                [InlineKeyboardButton('🧑‍💻~𝐒𝐚𝐡𝐢𝐛𝐢𝐦~🧑‍💻', url='https://t.me/DeepBotsventor')],
+                [InlineKeyboardButton('🧑‍💻~𝐃𝐞𝐞𝐩 𝐁𝐨𝐭𝐬~🧑‍💻', url='https://t.me/DeepBotsofficial')]
             ])
    bot.send_video(chat_id=chat_id, video=video, caption=caption, reply_markup=buttons)
-   video.close()
 
 @bot.on_message(filters.command("bul") & ~filters.edited)
 def bul(_, message):
