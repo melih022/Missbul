@@ -8,5 +8,5 @@ ffmpeg
 telethon
 requests
 
-elegram
+telegram
 
