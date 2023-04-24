@@ -114,7 +114,7 @@ async def destek(event):
                 [InlineKeyboardButton('🧑‍💻~𝐒𝐚𝐡𝐢𝐛𝐢𝐦~🧑‍💻', url='https://t.me/DeepBotsventor')],
                 [InlineKeyboardButton('🧑‍💻~𝐃𝐞𝐞𝐩 𝐁𝐨𝐭𝐬~🧑‍💻', url='https://t.me/DeepBotsofficial')]
             ])
-   bot.send_video(chat_id=chat_id, video=video, caption=caption, reply_markup=buttons)
+   await bot.send_video(chat_id=chat_id, video=video, caption=caption, reply_markup=buttons)
 
 @bot.on_message(filters.command("bul") & ~filters.edited)
 def bul(_, message):
