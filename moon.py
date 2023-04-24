@@ -106,7 +106,7 @@ async def son_durum(event):
 @client.on(events.NewMessage(pattern='^/deep ?(.*)'))
 async def destek(event):
    chat_id = event.chat_id
-   video = open('deep.mp4', 'rb')
+   video = open('Deep.mp4', 'rb')
    caption = '**Keşfetmek İçin Derinlere Dal💫**'
    buttons = telegram.InlineKeyboardMarkup([
                 [telegram.InlineKeyboardButton('🧑‍💻~𝐒𝐚𝐡𝐢𝐛𝐢𝐦~🧑‍💻', url='https://t.me/DeepBotsventor')],
