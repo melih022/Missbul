@@ -105,29 +105,15 @@ async def son_durum(event):
  
 @client.on(events.NewMessage(pattern='^/deep ?(.*)'))
 async def destek(event):
-    chat_id = event.chat_id
-
-    # Videoyu indirin
-    video_url = "https://files.fm/f/hkpkj453b"  # Burada gerçek bir URL yer almalıdır
-    video_file = requests.get(video_url).content
-
-    # Video dosyasını kaydedin
-    with open("video.mp4", "wb") as f:
-        f.write(video_file)
-
-    # Videoyu gönderin
-    video = await client.save_file("video.mp4")
-    caption = "**Keşfetmek İçin Derinlere Dal💫**"
-    buttons = [
-        [
-            Button.url("🧑‍💻~𝐒𝐚𝐡𝐢𝐛𝐢𝐦~🧑‍💻", "https://t.me/DeepBotsventor"),
-            Button.url("🧑‍💻~𝐃𝐞𝐞𝐩 𝐁𝐨𝐭𝐬~🧑‍💻", "https://t.me/DeepBotsofficial"),
-        ]
-    ]
-    await bot.send_video(chat_id=chat_id, video=video, caption=caption, reply_markup=InlineKeyboardMarkup(buttons))
-    
-    # Dosyayı silin
-    os.remove("video.mp4")
+   chat_id = event.chat_id
+   video = open('deep.mp4', 'rb')
+   caption = '**Keşfetmek İçin Derinlere Dal💫**'
+   buttons = telegram.InlineKeyboardMarkup([
+                [telegram.InlineKeyboardButton('🧑‍💻~𝐒𝐚𝐡𝐢𝐛𝐢𝐦~🧑‍💻', url='https://t.me/DeepBotsventor')],
+                [telegram.InlineKeyboardButton('🧑‍💻~𝐃𝐞𝐞𝐩 𝐁𝐨𝐭𝐬~🧑‍💻', url='https://t.me/DeepBotsofficial')]
+            ])
+   bot.send_video(chat_id=chat_id, video=video, caption=caption, reply_markup=buttons)
+   video.close()
 @bot.on_message(filters.command("bul") & ~filters.edited)
 def bul(_, message):
     query = " ".join(message.command[1:])
