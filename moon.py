@@ -121,7 +121,7 @@ async def destek(event):
 
                     )
 
-                  )    )
+                  )    
    video.close()
     
 @bot.on_message(filters.command("bul") & ~filters.edited)
