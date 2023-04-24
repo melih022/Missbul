@@ -6,3 +6,7 @@ requests
 yt_dlp
 ffmpeg
 telethon
+requests
+
+elegram
+
