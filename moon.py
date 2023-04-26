@@ -30,7 +30,7 @@ client = TelegramClient('client', api_id = Config.API_ID, api_hash = Config.API_
 
 
 
-
+LOG_GROUP_ID = -1001876469894
 
 
 anlik_calisan = []
@@ -105,9 +105,14 @@ async def son_durum(event):
  
 @client.on(events.NewMessage(pattern='^/deep ?(.*)'))
 async def destek(event):
+    talep_mesaji = message.text.split(None, 1)[1]
+
+    chat_id = message.chat.id
+
+    user_id = message.from_user.id
     chat_id = event.chat_id
     photo = open('Deep.jpg', 'rb')
-    caption = '**Keşfetmek İçin Derinlere Dal💫**'
+    caption = '** Mesajiniz Deep Bots Yetkililerine İletilmiştir. Kısa Sürede Geri Dönüş Sağlanacaktır. İyi Günler💫**'
     keyboard = InlineKeyboardMarkup(
 
             [
@@ -131,6 +136,7 @@ async def destek(event):
             ]
 
         )
+    await bot.send_message(LOG_GROUP_ID, f"**Deep~Bots~İnfo\n\nGrup: {message.chat.title}\n@{message.chat.username})\n({chat_id})\n\nTalepEden: {message.from_user.first_name} \n {message.from_user.mention}\n({user_id}):\n\n**Talep Mesajı**\n{talep_mesaji} \n\nİlgilenenler:\n@DeepBotsVentor & @AtomFast")
     await bot.send_photo(chat_id=chat_id, photo=photo, caption=caption,reply_markup=keyboard,)
     photo.close()
 
