@@ -119,13 +119,19 @@ async def destek(event):
     user_surname = event.sender.username
     # Mesajı log grubuna gönder
     log_message = (
-        f"**Deep~Bots~İnfo**\n_______________\n\n"
-        f"💬𝙶𝚛𝚞𝚙 𝙱𝚒𝚕𝚐𝚒💬:"
-        f"**Grup İsmi> **[{group_title}]\nGrup İdsi> {chat_id}\n_______________\n\n"
-        f"👤𝙺𝚞𝚕𝚕𝚊𝚗𝚒𝚌𝚒 𝙱𝚒𝚕𝚐𝚒👤:"
-        f"**ismi > **{user_name}\nNicki> {user_surname}\n İd'si > {user_id}\n"
-        f"**Mesajı:**\n{talep_mesaji}\n\n@DeepBotsVentor\n@Atomfast"
-    )
+    f"**Deep~Bots~İnfo**\n\n"
+    f"💬 𝙶𝚛𝚞𝚙 𝙱𝚒𝚕𝚐𝚒 💬\n"
+    f"Grup İsmi: [{group_title}]\n"
+    f"Grup ID'si: {chat_id}\n\n"
+    f"👤 𝙺𝚞𝚕𝚕𝚊𝚗𝚒𝚌𝚒 𝙱𝚒𝚕𝚐𝚒 👤\n"
+    f"İsim: {user_name}\n"
+    f"Kullanıcı adı: @{user_surname}\n"
+    f"ID: {user_id}\n\n"
+    f"Mesaj:\n{talep_mesaji}\n\n"
+    f"@DeepBotsVentor\n"
+    f"@Atomfast"
+)
+
     
     
     # Slogan ve fotoğraf mesajı
