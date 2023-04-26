@@ -110,7 +110,7 @@ async def destek(event):
     
     # Mesajın gönderildiği grup bilgileri
     group_title = event.chat.title
-    group_link = await event.client.export_chat_invite_link(chat_id)
+    group_link = event.chat_id
     
     # Mesajı gönderen kullanıcının bilgileri
     user_id = event.from_id
