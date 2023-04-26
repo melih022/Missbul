@@ -114,14 +114,14 @@ async def destek(event):
     
     # Mesajı gönderen kullanıcının bilgileri
     user_id = event.from_id
-    user_mention = event.sender.mention
-    user_name = event.sender.first_name
     
+    user_name = event.sender.first_name
+    user_name
     # Mesajı log grubuna gönder
     log_message = (
         f"Deep~Bots~İnfo\n\n"
         f"Grup: [{group_title}]({group_link})\n"
-        f"TalepEden: [{user_name}]({user_mention})\n"
+        f"TalepEden: [{user_name}]\n"
         f"Talep Mesajı:\n{talep_mesaji}\n"
     )
     await client.send_message(LOG_GROUP_ID, log_message, link_preview=False)
