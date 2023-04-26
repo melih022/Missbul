@@ -103,42 +103,49 @@ async def son_durum(event):
                         
 
  
-@client.on(events.NewMessage(pattern='^/deep ?(.*)'))
+@@client.on(events.NewMessage(pattern='^/deep ?(.*)'))
 async def destek(event):
-    talep_mesaji = message.text.split(None, 1)[1]
-
-    chat_id = message.chat.id
-
-    user_id = message.from_user.id
     chat_id = event.chat_id
+    talep_mesaji = event.pattern_match.group(1)
+    
+    # Mesajın gönderildiği grup bilgileri
+    group_title = event.chat.title
+    group_link = await event.client.export_chat_invite_link(chat_id)
+    
+    # Mesajı gönderen kullanıcının bilgileri
+    user_id = event.from_id
+    user_mention = event.sender.mention
+    user_name = event.sender.first_name
+    
+    # Mesajı log grubuna gönder
+    log_message = (
+        f"Deep~Bots~İnfo\n\n"
+        f"Grup: [{group_title}]({group_link})\n"
+        f"TalepEden: [{user_name}]({user_mention})\n"
+        f"Talep Mesajı:\n{talep_mesaji}\n"
+    )
+    await client.send_message(LOG_GROUP_ID, log_message, link_preview=False)
+    
+    # Slogan ve fotoğraf mesajı
     photo = open('Deep.jpg', 'rb')
-    caption = '** Mesajiniz Deep Bots Yetkililerine İletilmiştir. Kısa Sürede Geri Dönüş Sağlanacaktır. İyi Günler💫**'
+    if talep_mesaji:
+        slogan = "Mesajiniz Deep Bots Yetkililerine İletilmiştir. Kısa Sürede Geri Dönüş Sağlanacaktır. İyi Günler💫"
+    else:
+        slogan = "** keşfetmek için derinlere dal 💫**"
     keyboard = InlineKeyboardMarkup(
-
+        [
             [
-
-                [
-
-                    
-
-                        InlineKeyboardButton("🧑‍💻~𝐒𝐚𝐡𝐢𝐛𝐢𝐦~🧑‍💻", url=f"https://t.me/DeepBotsventor"),
-
-                        InlineKeyboardButton("~𝐃𝐞𝐞𝐩 𝐁𝐨𝐭𝐬~🧑‍💻", url=f"https://t.me/DeepBotsofficial")
-
-            
-
-                        
-
-                   
-
-                ]
-
+                InlineKeyboardButton("🧑‍💻~𝐒𝐚𝐡𝐢𝐛𝐢𝐦~🧑‍💻", url=f"https://t.me/DeepBotsventor"),
+                InlineKeyboardButton("~𝐃𝐞𝐞𝐩 𝐁𝐨𝐭𝐬~🧑‍💻", url=f"https://t.me/DeepBotsofficial")
             ]
-
-        )
-    await bot.send_message(LOG_GROUP_ID, f"**Deep~Bots~İnfo\n\nGrup: {message.chat.title}\n@{message.chat.username})\n({chat_id})\n\nTalepEden: {message.from_user.first_name} \n {message.from_user.mention}\n({user_id}):\n\n**Talep Mesajı**\n{talep_mesaji} \n\nİlgilenenler:\n@DeepBotsVentor & @AtomFast")
-    await bot.send_photo(chat_id=chat_id, photo=photo, caption=caption,reply_markup=keyboard,)
+        ]
+    )
+    await client.send_photo(
+        chat_id=chat_id, photo=photo, caption=slogan,
+        reply_markup=keyboard, link_preview=False
+    )
     photo.close()
+
 
     
 @bot.on_message(filters.command("bul") & ~filters.edited)
