@@ -113,7 +113,7 @@ async def destek(event):
     group_link = event.chat_id
     
     # Mesajı gönderen kullanıcının bilgileri
-    user_id = event.from_id
+    user_id = event.from_id.user_id
     
     user_name = event.sender.first_name
     user_surname = event.sender.username
