@@ -120,18 +120,19 @@ async def destek(event):
     # Mesajı log grubuna gönder
     log_message = (
         f"Deep~Bots~İnfo\n\n"
-        f"Grup: [{group_title}]({group_link})\n"
+        f"Grup: [{group_title}]({group_link})\n\n"
         f"TalepEden: [{user_name}]\n"
-        f"Talep Mesajı:\n{talep_mesaji}\n"
+        f"Talep Mesajı:\n{talep_mesaji}\n\n @DeepBotsVentor\n@Atomfast"
     )
-    await client.send_message(LOG_GROUP_ID, log_message, link_preview=False)
+    
     
     # Slogan ve fotoğraf mesajı
     photo = open('Deep.jpg', 'rb')
     if talep_mesaji:
-        slogan = "Mesajiniz Deep Bots Yetkililerine İletilmiştir. Kısa Sürede Geri Dönüş Sağlanacaktır. İyi Günler💫"
+        slogan = "**Mesajınız Deep Bots Yetkililerine İletilmiştir. Kısa Sürede Geri Dönüş Sağlanacaktır. İyi Günler💫**"
+        await bot.send_message(LOG_GROUP_ID, log_message, link_preview=False)
     else:
-        slogan = "** keşfetmek için derinlere dal 💫**"
+        slogan = "**Keşfetmek İçin Derinlere Dal 💫**"
     keyboard = InlineKeyboardMarkup(
         [
             [
