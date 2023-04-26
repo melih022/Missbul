@@ -116,13 +116,15 @@ async def destek(event):
     user_id = event.from_id
     
     user_name = event.sender.first_name
-    user_name
+    user_surname = event.sender.username
     # Mesajı log grubuna gönder
     log_message = (
-        f"Deep~Bots~İnfo\n\n"
-        f"Grup: [{group_title}]({group_link})\n{chat_id}"
-        f"TalepEden: {user_name} {user_name} {user_id}\n"
-        f"Talep Mesajı:\n{talep_mesaji}\n\n @DeepBotsVentor\n@Atomfast"
+        f"**Deep~Bots~İnfo**\n_______________\n\n"
+        f"ɢʀᴜᴘ ʙɪʟɢɪ:"
+        f"**Grup İsmi> [{group_title}]\nGrup İdsi> {chat_id}\nGrup Link> {group_link}\n_______________**\n\n"
+        f"kullαnící вílgí:"
+        f"**ismi > {user_name}\nNicki> {user_surname}\n İd'si > {user_id}**\n"
+        f"**Mesajı:**\n{talep_mesaji}\n\n@DeepBotsVentor\n@Atomfast"
     )
     
     
