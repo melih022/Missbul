@@ -140,7 +140,7 @@ async def destek(event):
             ]
         ]
     )
-    await client.send_photo(
+    await bot.send_photo(
         chat_id=chat_id, photo=photo, caption=slogan,
         reply_markup=keyboard, link_preview=False
     )
