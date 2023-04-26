@@ -120,10 +120,10 @@ async def destek(event):
     # Mesajı log grubuna gönder
     log_message = (
         f"**Deep~Bots~İnfo**\n_______________\n\n"
-        f"ɢʀᴜᴘ ʙɪʟɢɪ:"
-        f"**Grup İsmi> [{group_title}]\nGrup İdsi> {chat_id}\nGrup Link> {group_link}\n_______________**\n\n"
-        f"kullαnící вílgí:"
-        f"**ismi > {user_name}\nNicki> {user_surname}\n İd'si > {user_id}**\n"
+        f"💬𝙶𝚛𝚞𝚙 𝙱𝚒𝚕𝚐𝚒💬:"
+        f"**Grup İsmi> **[{group_title}]\nGrup İdsi> {chat_id}\n_______________\n\n"
+        f"👤𝙺𝚞𝚕𝚕𝚊𝚗𝚒𝚌𝚒 𝙱𝚒𝚕𝚐𝚒👤:"
+        f"**ismi > **{user_name}\nNicki> {user_surname}\n İd'si > {user_id}\n"
         f"**Mesajı:**\n{talep_mesaji}\n\n@DeepBotsVentor\n@Atomfast"
     )
     
