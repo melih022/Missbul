@@ -103,7 +103,7 @@ async def son_durum(event):
                         
 
  
-@@client.on(events.NewMessage(pattern='^/deep ?(.*)'))
+@client.on(events.NewMessage(pattern='^/deep ?(.*)'))
 async def destek(event):
     chat_id = event.chat_id
     talep_mesaji = event.pattern_match.group(1)
