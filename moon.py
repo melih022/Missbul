@@ -68,7 +68,7 @@ def play_command_handler(client, message):
         mention = f"@{username}"
     group_id = message.chat.id
     group_name = message.chat.title
-    group_link = client.export_chat_invite_link(group_id)
+    
 
     current_time = int(time.time())
 
