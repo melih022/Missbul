@@ -7,5 +7,5 @@ class Config:
     BOT_OWNER = os.environ.get("BOT_OWNER", "Ireax")
     BOT_USERNAME = os.environ.get("BOT_USERNAME", "GoogleMuzikBot")
     PLAYLIST_NAME = os.environ.get("PLAYLIST_NAME", "GoogleMuzikKayıt")
-    GROUP = os.environ.get("HAKKIMDA", "DeepBotsOfficial") 
+    GROUP = os.environ.get("HAKKIMDA", "GoogleBilgi") 
     PLAYLIST_ID = int(os.environ.get("PLAYLIST_ID", "-1001711522921"))
