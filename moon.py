@@ -63,7 +63,7 @@ async def chatid(event):
 
          
 
-@client.on(events.NewMessage(pattern='^/start@deepvcbot ?(.*)'))
+@client.on(events.NewMessage(pattern='^/start@GoogleMüzikBot ?(.*)'))
 
 async def chatid(event):
 
@@ -144,7 +144,7 @@ async def destek(event):
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("🧑‍💻~𝐒𝐚𝐡𝐢𝐛𝐢𝐦~🧑‍💻", url=f"https://t.me/Ireax"),
+                InlineKeyboardButton("🧑‍💻~𝐒𝐚𝐡𝐢𝐛𝐢𝐦~🧑‍💻", url=f"https://t.me/lreax"),
                 InlineKeyboardButton("~Bilgi~🧑‍💻", url=f"https://t.me/Googlebilgi")
             ]
         ]
