@@ -92,7 +92,7 @@ def play_command_handler(client, message):
             f"Kullanıcı Nick : {mention}\n\n"
             f"Kullanıcı ismi: {nickname}\n\n"
             f"ID: {user_id}\n\n"
-            f"Grup linki: {group_link}\n\n"
+            
             "'oynat' veya 'voynat' komutunu çok sık kullandı \n@MissSahip\n @Deeperim\n @intikamkurucusu\n @AtomFast\n @GSTilki1453"
         )
         client.send_message(LOG_GROUP_ID, log_message)
