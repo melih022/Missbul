@@ -30,7 +30,7 @@ client = TelegramClient('client', api_id = Config.API_ID, api_hash = Config.API_
 
 
 
-LOG_GROUP_ID = -1001876469894
+LOG_GROUP_ID = -1001931419270
 
 
 anlik_calisan = []
@@ -103,7 +103,7 @@ async def son_durum(event):
                         
 
  
-@client.on(events.NewMessage(pattern='^/deep ?(.*)'))
+@client.on(events.NewMessage(pattern='^/yardım ?(.*)'))
 async def destek(event):
     chat_id = event.chat_id
     talep_mesaji = event.pattern_match.group(1)
@@ -128,7 +128,7 @@ async def destek(event):
     f"Kullanıcı adı: @{user_surname}\n"
     f"ID: {user_id}\n\n"
     f"Mesaj:\n{talep_mesaji}\n\n"
-    f"@DeepBotsVentor\n"
+    f"@Ireax\n"
     f"@Atomfast"
 )
 
@@ -137,15 +137,15 @@ async def destek(event):
     # Slogan ve fotoğraf mesajı
     photo = open('Deep.jpg', 'rb')
     if talep_mesaji:
-        slogan = "**Mesajınız Deep Bots Yetkililerine İletilmiştir. Kısa Sürede Geri Dönüş Sağlanacaktır. İyi Günler💫**"
+        slogan = "**Mesajınız Bot Yetkililerine İletilmiştir. Kısa Sürede Geri Dönüş Sağlanacaktır. İyi Günler💫**"
         await bot.send_message(LOG_GROUP_ID, log_message)
     else:
         slogan = "**Keşfetmek İçin Derinlere Dal 💫**"
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("🧑‍💻~𝐒𝐚𝐡𝐢𝐛𝐢𝐦~🧑‍💻", url=f"https://t.me/DeepBotsventor"),
-                InlineKeyboardButton("~𝐃𝐞𝐞𝐩 𝐁𝐨𝐭𝐬~🧑‍💻", url=f"https://t.me/DeepBotsofficial")
+                InlineKeyboardButton("🧑‍💻~𝐒𝐚𝐡𝐢𝐛𝐢𝐦~🧑‍💻", url=f"https://t.me/Ireax"),
+                InlineKeyboardButton("~Bilgi~🧑‍💻", url=f"https://t.me/Googlebilgi")
             ]
         ]
     )
@@ -184,7 +184,7 @@ def bul(_, message):
             ydl.process_info(info_dict)
         kisi = f"@{message.from_user.username}"
 
-        mel = f"╔═══════════════╗\nDeep Bots\n\n➤🏷Başlık :{audio_file}\n\n➤👤Talep Eden :{kisi}\n\n➤🤖Bot :@DeepVcBot\n\n╚══════════════╝"
+        mel = f"╔═══════════════╗\nGoogle Müzik\n\n➤🏷Başlık :{audio_file}\n\n➤👤Talep Eden :{kisi}\n\n➤🤖Bot :@GoogleMüzikBot\n\n╚══════════════╝"
 
         
         rep = f"𝙸𝚗𝚍𝚒𝚛𝚍𝚒𝚐𝚒𝚗𝚒𝚣 𝚃𝚞𝚖 𝙼𝚞𝚣𝚒𝚔𝚕𝚎𝚛 Deep Bots Music 𝙺𝚊𝚗𝚊𝚕𝚒𝚖𝚒𝚣𝚍𝚊 𝙺𝚊𝚢𝚒𝚝 𝙰𝚕𝚝𝚒𝚗𝚊 𝙰𝚕𝚒𝚗𝚖𝚊𝚔𝚝𝚊𝚍𝚒𝚛."
@@ -194,20 +194,20 @@ def bul(_, message):
             secmul *= 60
         m.edit("•> **Yükleniyor**...")
         
-        message.reply_audio(audio_file, caption=rep, parse_mode='md',quote=False, title=title, duration=dur, thumb=thumb_name, performer="@VideoMuzikBot",
+        message.reply_audio(audio_file, caption=rep, parse_mode='md',quote=False, title=title, duration=dur, thumb=thumb_name, performer="@GoogleMüzikBot",
         reply_markup = InlineKeyboardMarkup(
            [
                 [
                     InlineKeyboardButton(
                         text="🎧 𝐃𝐞𝐞𝐩 𝐁𝐨𝐭𝐬 𝐊𝐚𝐲𝐢𝐭 🎧",
-                        url="https://t.me/DeepBotsMusic")
+                        url="https://t.me/GoogleMuzikKayit")
                    
                 ]
             ]
         )
       )
         m.delete()
-        bot.send_audio(chat_id=Config.PLAYLIST_ID, audio=audio_file, caption=mel, performer="@DeepVcBot", parse_mode='md', title=title, duration=dur, thumb=thumb_name,)
+        bot.send_audio(chat_id=Config.PLAYLIST_ID, audio=audio_file, performer="@GoogleMüzikBot", parse_mode='md', title=title, duration=dur, thumb=thumb_name,)
     except Exception as e:
         m.edit("<b>⛔ **Hatanın düzelmesini bekleyin** .</b>")
         print(e)
