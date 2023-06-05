@@ -186,7 +186,8 @@ async def destek(event):
     f"Kullanıcı adı: @{user_surname}\n"
     f"ID: {user_id}\n\n"
     f"Mesaj:\n{talep_mesaji}\n\n"
-    f"@Ireax\n"
+    f"@lReax\n"
+    f"@GooglemuzikSahip\n"
     f"@Atomfast"
 )
 
