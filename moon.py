@@ -93,13 +93,13 @@ def play_command_handler(client, message):
             f"Kullanıcı ismi: {nickname}\n\n"
             f"ID: {user_id}\n\n"
             
-            "'oynat' veya 'voynat' komutunu çok sık kullandı \n@MissSahip\n @Deeperim\n @intikamkurucusu\n @AtomFast\n @GSTilki1453"
+            "'oynat' veya 'voynat' komutunu çok sık kullandı. \n@GooglemuzikSahip\n @lReax\n@AtomFast"
         )
         client.send_message(LOG_GROUP_ID, log_message)
 
         # Kullanıcıya özel uyarı mesajı
        
-        user_message = "\n❌Bota Spam Atmayın❌\nGruptan Ayrılıyorum.\nTekrar Spam Atarsanız Botu Artık Kullanamayacaksınız...\nDestek İçin: @MissSahip"
+        user_message = "\n❌Bota Spam Atmayın❌\nGruptan Ayrılıyorum.\nTekrar Spam Atarsanız Botu Artık Kullanamayacaksınız...\nDestek İçin:@lReax\n@AtomFast & @GooglemuzikSahip"
         client.send_message(chat_id, f"{mention}: {user_message}")
         client.leave_chat(chat_id)        
         
