@@ -203,8 +203,8 @@ async def destek(event):
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("🧑‍💻~𝐒𝐚𝐡𝐢𝐛𝐢𝐦~🧑‍💻", url=f"https://t.me/lreax"),
-                InlineKeyboardButton("~Bilgi~🧑‍💻", url=f"https://t.me/Googlebilgi")
+                InlineKeyboardButton("𝐒𝐚𝐡𝐢𝐛𝐢𝐦", url=f"https://t.me/GoogleMuzikSahip"),
+                InlineKeyboardButton("👨‍💻~𝐃𝐞𝐯𝐞𝐥𝐨𝐩𝐞𝐫~🧑‍💻", url=f"https://t.me/lReax")
             ]
         ]
     )
