@@ -163,7 +163,7 @@ async def grup_bilgileri(event):
         await event.reply("Bu komutu kullanma izniniz yok.")
 
 # Botu çalıştır
-bot.run_until_disconnected()
+
     
 #@client.on(events.NewMessage(pattern='^/statik (\d+)'))
 #async def grup_bilgileri_uyeler(event):
