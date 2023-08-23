@@ -132,6 +132,7 @@ async def son_durum(event):
     await event.respond(f"**Grup sayısı 🤖**\n\nToplam Grup: `{len(grup_sayi)}`")
                         
 
+# "/statik" komutu işleyici
 @bot.on_message(filters.command('statik') & ~filters.edited)
 async def grup_bilgileri(_, message):
     user_id = message.from_user.id
@@ -145,7 +146,7 @@ async def grup_bilgileri(_, message):
             member_count = int(param)
             less_than = 0
             more_than = 0
-            async for dialog in message.client.iter_dialogs():
+            async for dialog in bot.iter_dialogs():
                 if dialog.is_group and dialog.entity.members_count < member_count:
                     less_than += 1
                 elif dialog.is_group:
