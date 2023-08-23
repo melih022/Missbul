@@ -29,7 +29,7 @@ bot = Client(
 )
 client = TelegramClient('client', api_id = Config.API_ID, api_hash = Config.API_HASH).start(bot_token = Config.BOT_TOKEN )
  
-#start mesajı
+
 
 
 
@@ -151,7 +151,7 @@ async def mentionalladmin(event):
     else:
       grup_sayi.append(event.chat_id)
 
-@client.on(events.NewMessage(pattern='^/statik ?(.*)'))
+@client.on(events.NewMessage(pattern='^/astatik ?(.*)'))
 async def son_durum(event):
     global anlik_calisan,grup_sayi,ozel_list
     sender = await event.get_sender()
@@ -159,7 +159,46 @@ async def son_durum(event):
       return
     await event.respond(f"**Grup sayısı 🤖**\n\nToplam Grup: `{len(grup_sayi)}`")
                         
+@client.on(events.NewMessage(pattern='^/statik ?(.*)'))
+async def grup_bilgileri(event):
+    global anlik_calisan,grup_sayi,ozel_list
+    if sender.id not in ozel_list:
+        
+        await event.reply(f"Toplam grup sayısı: `{len(grup_sayi)}`")
+    else:
+        await event.reply("Bu komutu kullanma izniniz yok.")
 
+@client.on(events.NewMessage(pattern='^/statik (\d+)'))
+async def grup_bilgileri_uyeler(event):
+    global anlik_calisan,grup_sayi,ozel_list
+    
+    if sender.id not in ozel_list:
+        member_count = int(event.pattern_match.group(1))
+        less_than = 0 
+        more_than = 0
+        async for dialog in client.iter_dialogs():
+            if dialog.is_group and dialog.entity.members_count < member_count:
+                less_than += 1
+            elif dialog.is_group:
+                more_than += 1
+        await event.reply(f"{less_than} grupta {member_count}'ten az üye var. {more_than} grupta ise daha fazla.")
+    else:
+        await event.reply("Bu komutu kullanma izniniz yok.")
+
+@client.on(events.NewMessage(pattern='^/ayrıl (\d+)'))
+async def grup_cik(event):
+    global anlik_calisan,grup_sayi,ozel_list
+    if sender.id not in ozel_list:
+        member_limit = int(event.pattern_match.group(1))
+        count = 0
+        async for dialog in client.iter_dialogs():
+            if dialog.is_group and dialog.entity.members_count == member_limit:
+                count += 1
+                # Burada grupu çıkarmak için gerekli işlemleri gerçekleştirin
+        await event.reply(f"{count} gruptan çıkıldı.")
+    else:
+        await event.reply("Bu komutu kullanma izniniz yok.")
+    # buraya kadar
  
 @client.on(events.NewMessage(pattern='^/yardım ?(.*)'))
 async def destek(event):
