@@ -19,7 +19,7 @@ from pyrogram.types import CallbackQuery
 
 
 # Botu oluşturun
-deep = TelegramClient('bot', API_ID, API_HASH).start(bot_token=BOT_TOKEN)
+deep = TelegramClient('bot', api_id = Config.API_ID,api_hash = Config.API_HASH).start(bot_token=Config.BOT_TOKEN)
 
 #config#
 
