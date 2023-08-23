@@ -169,6 +169,35 @@ async def grup_bilgileri(event):
     else:
         await event.reply("Bu komutu kullanma izniniz yok.")
 
+
+
+
+@client.on(events.NewMessage(pattern='^/melih ?(\d*)'))
+async def grup_bilgileri(event):
+    global anlik_calisan, grup_sayi, ozel_list
+
+    sender = await event.get_sender()
+    user_id = sender.id
+
+    if user_id not in ozel_list:
+        param = event.pattern_match.group(1)
+        if not param:
+            await event.reply(f"Toplam grup sayısı: `{len(grup_sayi)}`")
+        elif param.isdigit():
+            member_count = int(param)
+            less_than = 0
+            more_than = 0
+            async for dialog in client.iter_dialogs():
+                if dialog.is_group and dialog.entity.members_count < member_count:
+                    less_than += 1
+                elif dialog.is_group:
+                    more_than += 1
+            await event.reply(f"{less_than} grupta {member_count}'ten az üye var. {more_than} grupta ise daha fazla.")
+        else:
+            await event.reply("Geçerli bir sayı belirtiniz.")
+    else:
+        await event.reply("Bu komutu kullanma izniniz yok.")
+    
 @client.on(events.NewMessage(pattern='^/statik (\d+)'))
 async def grup_bilgileri_uyeler(event):
     global anlik_calisan,grup_sayi,ozel_list
