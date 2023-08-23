@@ -136,9 +136,10 @@ async def son_durum(event):
 
 # "/statik" komutu işleyici
 # "/statik" komutu işleyici
-@deep.on(events.NewMessage(pattern='/statik(?:\s+(.*))?', incoming=True))
+# "/statik" komutu işleyici
+@bot.on(events.NewMessage(pattern='/statik(?:\s+(.*))?', incoming=True))
 async def grup_bilgileri(event):
-    global anlik_calisan, grup_sayi, ozel_list
+    global grup_sayi, ozel_list
     user_id = event.sender_id
     
     if user_id in ozel_list:
@@ -161,9 +162,6 @@ async def grup_bilgileri(event):
             await event.reply("Geçerli bir sayı belirtiniz.")
     else:
         await event.reply("Bu komutu kullanma izniniz yok.")
-
-# Botu çalıştır
-
     
 #@client.on(events.NewMessage(pattern='^/statik (\d+)'))
 #async def grup_bilgileri_uyeler(event):
