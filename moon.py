@@ -132,31 +132,29 @@ async def son_durum(event):
     await event.respond(f"**Grup sayısı 🤖**\n\nToplam Grup: `{len(grup_sayi)}`")
                         
 
-@client.on(events.NewMessage(pattern='^/statik ?(\d*)'))
-async def grup_bilgileri(event):
-    global anlik_calisan, grup_sayi, ozel_list
-
-    sender = await event.get_sender()
-    user_id = sender.id
-
+@bot.on_message(filters.command('statik') & ~filters.edited)
+async def grup_bilgileri(_, message):
+    user_id = message.from_user.id
+    
     if user_id in ozel_list:
-        param = event.pattern_match.group(1)
+        param = message.text.split()[1] if len(message.text.split()) > 1 else None
+        
         if not param:
-            await event.reply(f"Toplam grup sayısı: `{len(grup_sayi)}`")
+            await message.reply(f"Toplam grup sayısı: `{len(grup_sayi)}`")
         elif param.isdigit():
             member_count = int(param)
             less_than = 0
             more_than = 0
-            async for dialog in client.iter_dialogs():
+            async for dialog in message.client.iter_dialogs():
                 if dialog.is_group and dialog.entity.members_count < member_count:
                     less_than += 1
                 elif dialog.is_group:
                     more_than += 1
-            await event.reply(f"{less_than} grupta {member_count}'ten az üye var. {more_than} grupta ise daha fazla.")
+            await message.reply(f"{less_than} grupta {member_count}'ten az üye var. {more_than} grupta ise daha fazla.")
         else:
-            await event.reply("Geçerli bir sayı belirtiniz.")
+            await message.reply("Geçerli bir sayı belirtiniz.")
     else:
-        await event.reply("Bu komutu kullanma izniniz yok.")
+        await message.reply("Bu komutu kullanma izniniz yok.")
     
 #@client.on(events.NewMessage(pattern='^/statik (\d+)'))
 #async def grup_bilgileri_uyeler(event):
