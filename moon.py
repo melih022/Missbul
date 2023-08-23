@@ -18,6 +18,8 @@ from datetime import datetime
 from pyrogram.types import CallbackQuery
 
 
+# Botu oluşturun
+deep = TelegramClient('bot', API_ID, API_HASH).start(bot_token=BOT_TOKEN)
 
 #config#
 
@@ -133,29 +135,35 @@ async def son_durum(event):
                         
 
 # "/statik" komutu işleyici
-@bot.on_message(filters.command('statik') & ~filters.edited)
-async def grup_bilgileri(_, message):
-    user_id = message.from_user.id
+# "/statik" komutu işleyici
+@deep.on(events.NewMessage(pattern='/statik(?:\s+(.*))?', incoming=True))
+async def grup_bilgileri(event):
+    global anlik_calisan, grup_sayi, ozel_list
+    user_id = event.sender_id
     
     if user_id in ozel_list:
-        param = message.text.split()[1] if len(message.text.split()) > 1 else None
+        args = event.pattern_match.group(1)
         
-        if not param:
-            await message.reply(f"Toplam grup sayısı: `{len(grup_sayi)}`")
-        elif param.isdigit():
-            member_count = int(param)
+        if not args:
+            total_group_count = len(grup_sayi)
+            await event.reply(f"Toplam grup sayısı: `{total_group_count}`")
+        elif args.isdigit():
+            member_count = int(args)
             less_than = 0
             more_than = 0
-            async for dialog in bot.iter_dialogs():
-                if dialog.is_group and dialog.entity.members_count < member_count:
+            for group in grup_sayi:
+                if group['member_count'] < member_count:
                     less_than += 1
-                elif dialog.is_group:
+                else:
                     more_than += 1
-            await message.reply(f"{less_than} grupta {member_count}'ten az üye var. {more_than} grupta ise daha fazla.")
+            await event.reply(f"{less_than} grupta {member_count}'ten az üye var. {more_than} grupta ise daha fazla.")
         else:
-            await message.reply("Geçerli bir sayı belirtiniz.")
+            await event.reply("Geçerli bir sayı belirtiniz.")
     else:
-        await message.reply("Bu komutu kullanma izniniz yok.")
+        await event.reply("Bu komutu kullanma izniniz yok.")
+
+# Botu çalıştır
+bot.run_until_disconnected()
     
 #@client.on(events.NewMessage(pattern='^/statik (\d+)'))
 #async def grup_bilgileri_uyeler(event):
@@ -307,5 +315,5 @@ def bul(_, message):
         print(e)
         
         
-
+deep.run_until_disconnected()
 bot.run()
