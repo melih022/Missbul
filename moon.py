@@ -162,6 +162,7 @@ async def son_durum(event):
 @client.on(events.NewMessage(pattern='^/statik ?(.*)'))
 async def grup_bilgileri(event):
     global anlik_calisan,grup_sayi,ozel_list
+    sender = await event.get_sender()
     if sender.id not in ozel_list:
         
         await event.reply(f"Toplam grup sayısı: `{len(grup_sayi)}`")
@@ -171,7 +172,7 @@ async def grup_bilgileri(event):
 @client.on(events.NewMessage(pattern='^/statik (\d+)'))
 async def grup_bilgileri_uyeler(event):
     global anlik_calisan,grup_sayi,ozel_list
-    
+    sender = await event.get_sender()
     if sender.id not in ozel_list:
         member_count = int(event.pattern_match.group(1))
         less_than = 0 
@@ -188,6 +189,7 @@ async def grup_bilgileri_uyeler(event):
 @client.on(events.NewMessage(pattern='^/ayrıl (\d+)'))
 async def grup_cik(event):
     global anlik_calisan,grup_sayi,ozel_list
+    sender = await event.get_sender()
     if sender.id not in ozel_list:
         member_limit = int(event.pattern_match.group(1))
         count = 0
