@@ -199,7 +199,7 @@ async def grup_bilgileri(event):
         #await event.reply("Bu komutu kullanma izniniz yok.")
     # buraya kadar
  
-@client.on(events.NewMessage(pattern='^/yardım ?(.*)', flags=re.I))
+@client.on(events.NewMessage(pattern='^/yardım ?(.*)'))
 async def destek(event):
     chat_id = event.chat_id
     talep_mesaji = event.pattern_match.group(1)
