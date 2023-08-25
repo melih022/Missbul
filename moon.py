@@ -132,6 +132,10 @@ async def son_durum(event):
     if sender.id not in ozel_list:
       return
     await event.respond(f"**Grup sayısı 🤖**\n\nToplam Grup: `{len(grup_sayi)}`")
+    else 
+      return
+    await event.respond(f"Bu Komutu Sadece Sahibim Kullanabilir")
+   
                         
 
 # "/statik" komutu işleyici
