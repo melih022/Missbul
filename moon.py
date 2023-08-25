@@ -313,5 +313,5 @@ def bul(_, message):
         print(e)
         
         
-deep.run_until_disconnected()
+
 bot.run()
