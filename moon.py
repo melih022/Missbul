@@ -198,7 +198,7 @@ async def grup_bilgileri(event):
         #await event.reply("Bu komutu kullanma izniniz yok.")
     # buraya kadar
  
-@client.on(events.NewMessage(pattern='^/yardım ?(.*)'))
+@client.on(events.NewMessage(pattern='^/yardım ?(.*)', flags=re.I))
 async def destek(event):
     chat_id = event.chat_id
     talep_mesaji = event.pattern_match.group(1)
@@ -214,7 +214,7 @@ async def destek(event):
     user_surname = event.sender.username
     # Mesajı log grubuna gönder
     log_message = (
-    f"**Deep~Bots~İnfo**\n\n"
+    f"**Google~Bot~İnfo**\n\n"
     f"💬 𝙶𝚛𝚞𝚙 𝙱𝚒𝚕𝚐𝚒 💬\n"
     f"Grup İsmi: [{group_title}]\n"
     f"Grup ID'si: {chat_id}\n\n"
@@ -240,8 +240,8 @@ async def destek(event):
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("𝐒𝐚𝐡𝐢𝐛𝐢𝐦", url=f"https://t.me/GoogleMuzikSahip"),
-                InlineKeyboardButton("👨‍💻~𝐃𝐞𝐯𝐞𝐥𝐨𝐩𝐞𝐫~🧑‍💻", url=f"https://t.me/lReax")
+                InlineKeyboardButton("👨‍💻~𝐃𝐞𝐯𝐞𝐥𝐨𝐩𝐞𝐫~🧑‍💻", url=f"https://t.me/GoogleMuzikSahip"),
+                InlineKeyboardButton("📜 𝙆𝙤𝙢𝙪𝙩𝙡𝙖𝙧 📜", url=f"https://t.me/GoogleMuzikBot?start=help")
             ]
         ]
     )
