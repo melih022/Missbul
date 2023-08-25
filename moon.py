@@ -127,15 +127,13 @@ async def mentionalladmin(event):
 
 @client.on(events.NewMessage(pattern='^/astatik ?(.*)'))
 async def son_durum(event):
-    global anlik_calisan,grup_sayi,ozel_list
+    global anlik_calisan, grup_sayi, ozel_list
     sender = await event.get_sender()
-    if sender.id not in ozel_list:
-      return
-    await event.respond(f"**Grup sayısı 🤖**\n\nToplam Grup: `{len(grup_sayi)}`")
-    else 
-      return
-    await event.respond(f"Bu Komutu Sadece Sahibim Kullanabilir")
-   
+    if sender.id in ozel_list:
+        await event.respond(f"**Grup sayısı 🤖**\n\nToplam Grup: `{len(grup_sayi)}`")
+    else:
+        await event.respond("Bu Komutu Sadece Sahibim Kullanabilir")
+
                         
 
 # "/statik" komutu işleyici
