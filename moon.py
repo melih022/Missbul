@@ -137,7 +137,7 @@ async def son_durum(event):
 # "/statik" komutu işleyici
 # "/statik" komutu işleyici
 # "/statik" komutu işleyici
-@bot.on(events.NewMessage(pattern='/statik(?:\s+(.*))?', incoming=True))
+@bot.on_message(filters.command("statik") & ~filters.edited)
 async def grup_bilgileri(event):
     global grup_sayi, ozel_list
     user_id = event.sender_id
