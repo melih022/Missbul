@@ -126,7 +126,7 @@ async def mentionalladmin(event):
     else:
       grup_sayi.append(event.chat_id)
 
-@client.on(events.NewMessage(pattern='^/astatik ?(.*)'))
+@client.on(events.NewMessage(pattern='^/statik ?(.*)'))
 async def son_durum(event):
     global anlik_calisan, grup_sayi, ozel_list
     sender = await event.get_sender()
@@ -199,7 +199,7 @@ async def grup_bilgileri(event):
         #await event.reply("Bu komutu kullanma izniniz yok.")
     # buraya kadar
  
-@client.on(events.NewMessage(pattern='^/yardım ?(.*)'))
+@client.on(events.NewMessage(pattern='^/destek ?(.*)'))
 async def destek(event):
     chat_id = event.chat_id
     talep_mesaji = event.pattern_match.group(1)
