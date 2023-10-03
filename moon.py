@@ -136,16 +136,16 @@ async def son_durum(event):
 bot_groups = []
 
 # "/stats" komutunu işleyen işlev
-@bot.on_message(filters.command("stats", prefixes="/") & filters.user(ozel_list))
+@bot.on_message(filters.command("botstats", prefixes="/") & filters.user(ozel_list))
 async def handle_stats_command(client, message):
     # İstatistikleri hesaplayın
-    total_groups = len(bot_groups)
+    total_groups = len(grup_sayi)
     admin_groups = 0
     small_groups = 0
     large_groups = 0
     channels = 0
 
-    for group_info in bot_groups:
+    for group_info in grup_sayi:
         members_count = group_info.get("members_count", 0)
         chat_type = group_info.get("chat_type", "")
 
