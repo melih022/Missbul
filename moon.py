@@ -42,88 +42,6 @@ PLAY_THRESHOLD = 8
 PLAY_TIME_WINDOW = 5
 play_counts = {}
 
-
-
-
-
-
-# Telegram Bot API anahtarını buraya girin
-bot_token = "6188130506:AAF_YV9Aa2ErP6pPNHlypaSsmKthluBZ8BQ"
-
-# Telegram Bot API'nin temel URL'si
-bot_url = f"https://api.telegram.org/bot6188130506:AAF_YV9Aa2ErP6pPNHlypaSsmKthluBZ8BQ/"
-
-# Bot sahibinin ID'si
-owner_id = "5009212526"
-
-# "/stats" komutunu işleyen fonksiyon
-def handle_stats_command(chat_id):
-    # Botunuzun kullanıldığı grupları ve kanalları saymak için kullanacağımız değişkenler
-    small_groups = 0
-    large_groups = 0
-    channels = 0
-
-    # Botunuzun bulunduğu grupları ve yetkili olduğunuz grupları saymak için kullanacağımız değişkenler
-    total_groups = 0
-    admin_groups = 0
-
-    # Botunuzun kullanıldığı tüm grupları ve kanalları alın
-    get_updates_url = f"{bot_url}getUpdates"
-    response = requests.get(get_updates_url)
-    data = json.loads(response.content)
-
-    # Her grup ve kanal için gerekli bilgileri alın
-    for update in data["result"]:
-        chat_type = update["message"]["chat"]["type"]
-        if chat_type == "group":
-            members_count = update["message"]["chat"]["members_count"]
-            if members_count < 100:
-                small_groups += 1
-            else:
-                large_groups += 1
-            total_groups += 1
-            # Eğer bot yetkili ise, admin_groups değişkenini arttırın
-            if "entities" in update["message"] and update["message"]["entities"][0]["type"] == "bot_command":
-                admin_groups += 1
-        elif chat_type == "channel":
-            channels += 1
-
-    # Mesajı oluşturun
-    message = f"Bot {small_groups} üyesi 100 altındaki gruplarda ve {large_groups} üyesi 100 üstündeki gruplarda kullanılıyor. Toplamda {total_groups} grupta bulunuyor ve bunların {admin_groups} tanesinde yetkili olarak çalışıyor."
-
-    # Mesajı gönderin
-    send_message_url = f"{bot_url}sendMessage?chat_id={chat_id}&text={message}"
-    response = requests.get(send_message_url)
-
-# Botunuzun mesajları almak için kullanacağı URL
-get_updates_url = f"{bot_url}getUpdates"
-
-# Botunuzun mesajları sürekli olarak kontrol edin
-while True:
-    # Botunuzun mesajları alın
-    response = requests.get(get_updates_url)
-    data = json.loads(response.content)
-
-    # Her mesaj için gerekli işlemleri yapın
-    for update in data["result"]:
-    # Eğer mesajın "message" anahtarı yoksa, bir sonraki mesaja geçin
-       if "message" in update and "text" in update["message"]:
-       message_text = update["message"]["text"]
-    # Devam eden işlemler
-       else:
-    print("Geçerli bir metin mesajı bulunamadı.")
-
-           
-
-    # Mesajın metnini alın
-       message_text = update["message"]["text"]
-
-    # Mesajın gönderildiği chat'in ID'sini alın
-       chat_id = update["message"]["chat"]["id"]
-
-    # Eğer mesaj "/stats" ise, handle_stats_command fonksiyonunu çağırın
-       if message_text == "/stats" and str(chat_id) == owner_id:
-           handle_stats_command(chat_id)
 # "oynat" veya "voynat" komutunu takip eden filtre
 @bot.on_message(filters.command(["oynat", "voynat"]))
 def play_command_handler(client, message):
@@ -178,7 +96,7 @@ async def chatid(event):
 
     global grup_sayi
 
-@client.on(events.NewMessage(pattern='^/start@GoogleMüzikBot ?(.*)'))
+@client.on(events.NewMessage(pattern='^/start@GoogleMüziksBot ?(.*)'))
 
 async def chatid(event):
 
@@ -199,6 +117,7 @@ async def chatid(event):
     else:
 
       grup_sayi.append(event.chat_id)
+        
 @client.on(events.NewMessage())
 async def mentionalladmin(event):
   global grup_sayi
@@ -217,70 +136,46 @@ async def son_durum(event):
     else:
         await event.respond("Bu Komutu Sadece Sahibim Kullanabilir")
 
-                        
+# Botun bulunduğu grupları ve kanalları takip eden bir liste oluşturun
+bot_groups = []
 
-# "/statik" komutu işleyici
-# "/statik" komutu işleyici
-# "/statik" komutu işleyici
-@bot.on_message(filters.command("statik") & ~filters.edited)
-async def grup_bilgileri(event):
-    global grup_sayi, ozel_list
-    user_id = event.sender_id
-    
-    if user_id in ozel_list:
-        args = event.pattern_match.group(1)
-        
-        if not args:
-            total_group_count = len(grup_sayi)
-            await event.reply(f"Toplam grup sayısı: `{total_group_count}`")
-        elif args.isdigit():
-            member_count = int(args)
-            less_than = 0
-            more_than = 0
-            for group in grup_sayi:
-                if group['member_count'] < member_count:
-                    less_than += 1
-                else:
-                    more_than += 1
-            await event.reply(f"{less_than} grupta {member_count}'ten az üye var. {more_than} grupta ise daha fazla.")
-        else:
-            await event.reply("Geçerli bir sayı belirtiniz.")
-    else:
-        await event.reply("Bu komutu kullanma izniniz yok.")
-    
-#@client.on(events.NewMessage(pattern='^/statik (\d+)'))
-#async def grup_bilgileri_uyeler(event):
-    #global anlik_calisan,grup_sayi,ozel_list
-    #sender = await event.get_sender()
-    #if sender.id not in ozel_list:
-       # member_count = int(event.pattern_match.group(1))
-       # less_than = 0 
-        #more_than = 0
-        #async for dialog in client.iter_dialogs():
-            #if dialog.is_group and dialog.entity.members_count < member_count:
-                #less_than += 1
-            #elif dialog.is_group:
-                #more_than += 1
-        #await event.reply(f"{less_than} grupta {member_count}'ten az üye var. {more_than} grupta ise daha fazla.")
-    #else:
-        #await event.reply("Bu komutu kullanma izniniz yok.")
+# "/stats" komutunu işleyen işlev
+@bot.on_message(filters.command("stats", prefixes="/") & filters.user(owner_id))
+async def handle_stats_command(client, message):
+    # İstatistikleri hesaplayın
+    total_groups = len(bot_groups)
+    admin_groups = 0
+    small_groups = 0
+    large_groups = 0
+    channels = 0
 
-#@client.on(events.NewMessage(pattern='^/ayrıl (\d+)'))
-#async def grup_cik(event):
-    #global anlik_calisan,grup_sayi,ozel_list
-    #sender = await event.get_sender()
-    #if sender.id not in ozel_list:
-        #member_limit = int(event.pattern_match.group(1))
-        #count = 0
-        #async for dialog in client.iter_dialogs():
-            #if dialog.is_group and dialog.entity.members_count == member_limit:
-                #count += 1
-                # Burada grupu çıkarmak için gerekli işlemleri gerçekleştirin
-        #await event.reply(f"{count} gruptan çıkıldı.")
-    #else:
-        #await event.reply("Bu komutu kullanma izniniz yok.")
-    # buraya kadar
- 
+    for group_info in bot_groups:
+        members_count = group_info.get("members_count", 0)
+        chat_type = group_info.get("chat_type", "")
+
+        if chat_type == "group":
+            if members_count < 100:
+                small_groups += 1
+            else:
+                large_groups += 1
+            if group_info.get("is_admin", False):
+                admin_groups += 1
+        elif chat_type == "channel":
+            channels += 1
+
+    # İstatistik mesajını oluşturun
+    stats_message = (
+        f"Toplam gruplar ve kanallar: {total_groups}\n"
+        f"Yetkili olduğunuz gruplar: {admin_groups}\n"
+        f"100 üyesi altı gruplar: {small_groups}\n"
+        f"100 üyesi üstü gruplar: {large_groups}\n"
+        f"Toplam kanallar: {channels}\n"
+    )
+
+    # İstatistikleri yanıt olarak gönderin
+    await message.reply(stats_message)
+
+
 @client.on(events.NewMessage(pattern='^/destek ?(.*)'))
 async def destek(event):
     chat_id = event.chat_id
