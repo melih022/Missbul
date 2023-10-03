@@ -1,7 +1,7 @@
 import os
 
 class Config:
-    BOT_TOKEN = os.environ.get("BOT_TOKEN", "6157942511:AAE_O2oiUfrKV0D4h2Wgz7AqL48OFPIbxkI")
+    BOT_TOKEN = os.environ.get("BOT_TOKEN", "6188130506:AAF_YV9Aa2ErP6pPNHlypaSsmKthluBZ8BQ")
     API_ID = int(os.environ.get("API_ID", "20305957"))
     API_HASH = os.environ.get("API_HASH", "02f612321d53994c6a607ac2ba03206a")
     BOT_OWNER = os.environ.get("BOT_OWNER", "lreax")
