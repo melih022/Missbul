@@ -20,10 +20,6 @@ from datetime import datetime
 from pyrogram.types import CallbackQuery
 
 
-# Botu oluşturun
-deep = TelegramClient('bot', api_id = Config.API_ID,api_hash = Config.API_HASH).start(bot_token=Config.BOT_TOKEN)
-
-#config#
 
 bot = Client(
     'moonBot',
@@ -140,7 +136,7 @@ async def son_durum(event):
 bot_groups = []
 
 # "/stats" komutunu işleyen işlev
-@bot.on_message(filters.command("stats", prefixes="/") & filters.user(owner_id))
+@bot.on_message(filters.command("stats", prefixes="/") & filters.user(ozel_list))
 async def handle_stats_command(client, message):
     # İstatistikleri hesaplayın
     total_groups = len(bot_groups)
