@@ -146,8 +146,12 @@ async def handle_stats_command(client, message):
     channels = 0
 
     for group_info in grup_sayi:
-        members_count = group_info.get("members_count", 0)
-        chat_type = group_info.get("chat_type", "")
+        if isinstance(group_info, int):
+            members_count = 0
+            chat_type = ""
+        else:
+            members_count = group_info.get("members_count", 0)
+            chat_type = group_info.get("chat_type", "")
 
         if chat_type == "group":
             if members_count < 100:
