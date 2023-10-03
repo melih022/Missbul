@@ -86,7 +86,7 @@ def play_command_handler(client, message):
 
         # Kullanıcıya özel uyarı mesajı
        
-        user_message = "\n❌Bota Spam Atmayın❌\nGruptan Ayrılıyorum.\nTekrar Spam Atarsanız Botu Artık Kullanamayacaksınız...\nDestek İçin:@lReax\n@AtomFast & @GooglemuzikSahip"
+        user_message = "\n❌Bota Spam Atmayın❌\nGruptan Ayrılıyorum.\nTekrar Spam Atarsanız Botu Artık Kullanamayacaksınız...\nDestek İçin:@lReax"
         client.send_message(chat_id, f"{mention}: {user_message}")
         client.leave_chat(chat_id)        
         
@@ -242,7 +242,7 @@ async def destek(event):
         [
             [
                 InlineKeyboardButton("👨‍💻~𝐃𝐞𝐯𝐞𝐥𝐨𝐩𝐞𝐫~🧑‍💻", url=f"https://t.me/GoogleMuzikSahip"),
-                InlineKeyboardButton("📜 𝙆𝙤𝙢𝙪𝙩𝙡𝙖𝙧 📜", url=f"https://t.me/GoogleMuzikBot?start=help")
+                InlineKeyboardButton("📜 𝙆𝙤𝙢𝙪𝙩𝙡𝙖𝙧 📜", url=f"https://t.me/GoogleMuziksBot?start=help")
             ]
         ]
     )
