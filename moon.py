@@ -107,8 +107,13 @@ while True:
     # Her mesaj için gerekli işlemleri yapın
     for update in data["result"]:
     # Eğer mesajın "message" anahtarı yoksa, bir sonraki mesaja geçin
-       if "message" not in update:
-           continue
+       if "message" in update and "text" in update["message"]:
+       message_text = update["message"]["text"]
+    # Devam eden işlemler
+       else:
+    print("Geçerli bir metin mesajı bulunamadı.")
+
+           
 
     # Mesajın metnini alın
        message_text = update["message"]["text"]
