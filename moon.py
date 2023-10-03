@@ -14,6 +14,7 @@ from pyrogram.types import (
     Message
 )
 import requests
+import json
 import telegram
 from datetime import datetime
 from pyrogram.types import CallbackQuery
@@ -41,6 +42,79 @@ PLAY_THRESHOLD = 8
 PLAY_TIME_WINDOW = 5
 play_counts = {}
 
+
+
+
+
+
+# Telegram Bot API anahtarını buraya girin
+bot_token = "6188130506:AAF_YV9Aa2ErP6pPNHlypaSsmKthluBZ8BQ"
+
+# Telegram Bot API'nin temel URL'si
+bot_url = f"https://api.telegram.org/bot6188130506:AAF_YV9Aa2ErP6pPNHlypaSsmKthluBZ8BQ/"
+
+# Bot sahibinin ID'si
+owner_id = "5009212526"
+
+# "/stats" komutunu işleyen fonksiyon
+def handle_stats_command(chat_id):
+    # Botunuzun kullanıldığı grupları ve kanalları saymak için kullanacağımız değişkenler
+    small_groups = 0
+    large_groups = 0
+    channels = 0
+
+    # Botunuzun bulunduğu grupları ve yetkili olduğunuz grupları saymak için kullanacağımız değişkenler
+    total_groups = 0
+    admin_groups = 0
+
+    # Botunuzun kullanıldığı tüm grupları ve kanalları alın
+    get_updates_url = f"{bot_url}getUpdates"
+    response = requests.get(get_updates_url)
+    data = json.loads(response.content)
+
+    # Her grup ve kanal için gerekli bilgileri alın
+    for update in data["result"]:
+        chat_type = update["message"]["chat"]["type"]
+        if chat_type == "group":
+            members_count = update["message"]["chat"]["members_count"]
+            if members_count < 100:
+                small_groups += 1
+            else:
+                large_groups += 1
+            total_groups += 1
+            # Eğer bot yetkili ise, admin_groups değişkenini arttırın
+            if "entities" in update["message"] and update["message"]["entities"][0]["type"] == "bot_command":
+                admin_groups += 1
+        elif chat_type == "channel":
+            channels += 1
+
+    # Mesajı oluşturun
+    message = f"Bot {small_groups} üyesi 100 altındaki gruplarda ve {large_groups} üyesi 100 üstündeki gruplarda kullanılıyor. Toplamda {total_groups} grupta bulunuyor ve bunların {admin_groups} tanesinde yetkili olarak çalışıyor."
+
+    # Mesajı gönderin
+    send_message_url = f"{bot_url}sendMessage?chat_id={chat_id}&text={message}"
+    response = requests.get(send_message_url)
+
+# Botunuzun mesajları almak için kullanacağı URL
+get_updates_url = f"{bot_url}getUpdates"
+
+# Botunuzun mesajları sürekli olarak kontrol edin
+while True:
+    # Botunuzun mesajları alın
+    response = requests.get(get_updates_url)
+    data = json.loads(response.content)
+
+    # Her mesaj için gerekli işlemleri yapın
+    for update in data["result"]:
+        # Mesajın metnini alın
+        message_text = update["message"]["text"]
+
+        # Mesajın gönderildiği chat'in ID'sini alın
+        chat_id = update["message"]["chat"]["id"]
+
+        # Eğer mesaj "/stats" ise, handle_stats_command fonksiyonunu çağırın
+        if message_text == "/stats" and str(chat_id) == owner_id:
+            handle_stats_command(chat_id)
 # "oynat" komutunu takip eden filtre
 # "oynat" veya "voynat" komutunu takip eden filtre
 @bot.on_message(filters.command(["oynat", "voynat"]))
