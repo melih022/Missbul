@@ -106,16 +106,19 @@ while True:
 
     # Her mesaj için gerekli işlemleri yapın
     for update in data["result"]:
-        # Mesajın metnini alın
-        message_text = update["message"]["text"]
+    # Eğer mesajın "message" anahtarı yoksa, bir sonraki mesaja geçin
+       if "message" not in update:
+           continue
 
-        # Mesajın gönderildiği chat'in ID'sini alın
-        chat_id = update["message"]["chat"]["id"]
+    # Mesajın metnini alın
+       message_text = update["message"]["text"]
 
-        # Eğer mesaj "/stats" ise, handle_stats_command fonksiyonunu çağırın
-        if message_text == "/stats" and str(chat_id) == owner_id:
-            handle_stats_command(chat_id)
-# "oynat" komutunu takip eden filtre
+    # Mesajın gönderildiği chat'in ID'sini alın
+       chat_id = update["message"]["chat"]["id"]
+
+    # Eğer mesaj "/stats" ise, handle_stats_command fonksiyonunu çağırın
+       if message_text == "/stats" and str(chat_id) == owner_id:
+           handle_stats_command(chat_id)
 # "oynat" veya "voynat" komutunu takip eden filtre
 @bot.on_message(filters.command(["oynat", "voynat"]))
 def play_command_handler(client, message):
