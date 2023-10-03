@@ -225,8 +225,8 @@ async def destek(event):
     f"ID: {user_id}\n\n"
     f"Mesaj:\n{talep_mesaji}\n\n"
     f"@lReax\n"
-    f"@GooglemuzikSahip\n"
-    f"@Atomfast"
+    
+    
 )
 
     
