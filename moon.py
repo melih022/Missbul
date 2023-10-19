@@ -82,9 +82,9 @@ def play_command_handler(client, message):
 
         # Kullanıcıya özel uyarı mesajı
        
-        user_message = "\n❌Bota Spam Atmayın❌\nGruptan Ayrılıyorum.\nTekrar Spam Atarsanız Botu Artık Kullanamayacaksınız...\nDestek İçin:@lReax"
+        user_message = "\n❌Bota Spam Atmayın❌\n\nTekrar Spam Atarsanız Botu Artık Kullanamayacaksınız...\nDestek İçin:@lReax"
         client.send_message(chat_id, f"{mention}: {user_message}")
-        client.leave_chat(chat_id)        
+        #client.leave_chat(chat_id)        
         
 @client.on(events.NewMessage(pattern='^/reload ?(.*)'))
 
