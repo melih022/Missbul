@@ -39,7 +39,7 @@ PLAY_TIME_WINDOW = 5
 play_counts = {}
 
 # "oynat" veya "voynat" komutunu takip eden filtre
-@bot.on_message(filters.command(["oynat", "voynat", "start", "bul" ]))
+@bot.on_message(filters.command(["oynat", "voynat", "start"]))
 def play_command_handler(client, message):
     user_id = message.from_user.id
     chat_id = message.chat.id
