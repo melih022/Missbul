@@ -28,7 +28,7 @@ bot = Client(
     api_hash = Config.API_HASH
 )
 client = TelegramClient('client', api_id = Config.API_ID, api_hash = Config.API_HASH).start(bot_token = Config.BOT_TOKEN )
-LOG_GROUP_ID = -1001931419270
+LOG_GROUP_ID = -1002096066017
 anlik_calisan = []
 ozel_list = [5009212526]
 grup_sayi = [] 
