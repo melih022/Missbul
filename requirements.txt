@@ -7,6 +7,4 @@ yt_dlp
 ffmpeg
 telethon
 requests
-
 telegram
-
